@@ -20,7 +20,6 @@ function Home() {
             url: `${spaceXURL}/launch-next`
         })
         .then(res => {
-            console.log(res.data)
             setNextLaunch(res.data)
         })
         .catch(err => console.log(err))
@@ -35,7 +34,6 @@ function Home() {
             }
         })
         .then(res => {
-            console.log(res.data)
             setLastLaunch(res.data)
         })
         .catch(err => console.log(err))
@@ -59,7 +57,7 @@ function Home() {
                 <Button sx={{ mt:4 }} variant={'outlined'} onClick={() => window.location.href="#explore"}>Explore</Button>
             </Box>
             <Box id='explore'>
-                <Typography variant='h5' my={4}>Next Launch :</Typography>
+                <Typography variant='h5' my={10}>Next Launch</Typography>
                 <Grid container justifyContent={'center'} columnSpacing={4}>
                     <Grid item xs={5}>
                         {nextLaunch ? (
@@ -68,7 +66,7 @@ function Home() {
                         
                     </Grid>
                 </Grid>
-                <Typography variant='h5' my={4}>Latest Launches :</Typography>
+                <Typography variant='h5' my={10}>Latest Launches</Typography>
                 <Grid container justifyContent={'center'} columnSpacing={4}>
                     {lastLaunch ? (  
                         lastLaunch.map(launch => (

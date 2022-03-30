@@ -10,7 +10,7 @@ function Display() {
         <Container>
             <Switch>
                 <Route path={'/Launches'} component={Launches} />
-                <Route path={'/Home'} component={Home} />
+                <Route exact path={'/'} component={Home} />
                 <Route path={'/Launch/:id'} component={LaunchDetails} />
             </Switch>
         </Container>

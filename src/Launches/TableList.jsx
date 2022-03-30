@@ -77,6 +77,7 @@ function TableList(props) {
             </Table>
           </TableContainer>
           <TablePagination
+            rowsPerPageOptions={10}
             component="div"
             count={props.filteredData.length}
             rowsPerPage={rowsNumber}

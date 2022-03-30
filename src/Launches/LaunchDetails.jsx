@@ -3,7 +3,6 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import EventIcon from '@mui/icons-material/Event';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import NumbersIcon from '@mui/icons-material/Numbers';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
@@ -100,14 +99,6 @@ function LaunchDetails() {
                             <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
-                                    <EventIcon />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary={launch.rocket.first_stage.cores[0].landing_type} />
-                            </ListItem>
-                            <ListItem>
-                            <ListItemAvatar>
-                                <Avatar>
                                     <RocketIcon />
                                 </Avatar>
                             </ListItemAvatar>
@@ -142,7 +133,11 @@ function LaunchDetails() {
             {launch.links.video_link ? (
                 <>
                     <Typography sx={{my:4}} variant={'h5'}>Launch videos</Typography>
-                    <iframe src={`https://youtube.com/embed/${launch.links.video_link.substr(17)}`} style={{ width:"60%", height:"60%", position:'absolute' }} frameBorder={0} allow='autoplay' title='launch_video'/>
+                    {launch.links.video_link.includes("?v=") ? (
+                         <iframe src={`https://youtube.com/embed/${launch.links.video_link.split('?v=')[1]}`} style={{ width:"60%", height:"60%", position:'absolute' }} frameBorder={0} allow='autoplay' title='launch_video'/>
+                    ) : launch.links.video_link.split('/').length === 4 ? (
+                        <iframe src={`https://youtube.com/embed/${launch.links.video_link.split('/')[3]}`} style={{ width:"60%", height:"60%", position:'absolute' }} frameBorder={0} allow='autoplay' title='launch_video'/>
+                    ) : null}
                 </>
                 ) : null }
             
